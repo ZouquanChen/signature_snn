@@ -1,0 +1,41 @@
+{
+  "method_name": "Integer-TCN",
+  "description": "Centralized DeepSignDB stylus real-forgery training, using the DsDTW 528-writer development subset; S=1 integer residual TCN.",
+  "model_name": "integer-tcn",
+  "simulation_steps": 1,
+  "spike_gradient": "clipped-ste",
+  "architecture": {
+    "integer_max": 4,
+    "tcn_width": 128,
+    "tcn_kernel": 5,
+    "tcn_dilations": "1,2,4,8",
+    "tcn_embed_dim": 256,
+    "tcn_residual_scale": 0.1
+  },
+  "training": {
+    "training_source": "real",
+    "train_datasets": "deepsigndb",
+    "data_root": "data_real_forgery/deepsigndb_stylus_v1",
+    "train_tasks": 4,
+    "train_shot_g": 5,
+    "train_shot_f": 10,
+    "epochs": 100,
+    "lr": 0.001,
+    "optimizer": "adamw",
+    "warmup_epochs": 5,
+    "grad_clip_norm": 1.0,
+    "lambda_div": 0.0,
+    "save_interval": 25
+  },
+  "evaluation": {
+    "dataset": "deepsigndb",
+    "environment": "centralized",
+    "writing_input": "stylus",
+    "primary_mode": "sf",
+    "references": [1, 4],
+    "protocol": "configs/protocols/deepsigndb_stylus_central.json",
+    "primary": "embedding_only",
+    "seeds": [1111, 2222, 3333, 4444, 5555],
+    "ablation_integer_max": [1, 2, 4, 8]
+  }
+}

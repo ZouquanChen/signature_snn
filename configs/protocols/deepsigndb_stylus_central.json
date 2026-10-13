@@ -1,0 +1,31 @@
+{
+  "name": "deepsigndb-stylus-central-real-v1",
+  "dataset": "DeepSignDB",
+  "writing_input": "stylus",
+  "training_environment": "centralized",
+  "training_supervision": "real-skilled-forgery-supervised",
+  "training_subsets": ["mcyt", "bsid", "ebio1"],
+  "training_writers": 528,
+  "evaluation_writers": 442,
+  "official_full_development_writers": 1084,
+  "independent_validation_split": false,
+  "references": [1, 4],
+  "one_reference_loops": 4,
+  "reference_selection": "first four genuine signatures; use each in turn for 1vs1, all four for 4vs1",
+  "checkpoint_selection": "fixed training budget; never select checkpoint or hyperparameters on evaluation EER",
+  "comparison_file_status": "source-code-derived protocol; official Comparison_Files not available for pair-by-pair verification",
+  "id_semantics": "Development and Evaluation are separately numbered; IDs are scoped by official split",
+  "sources": [
+    "https://github.com/BiDAlab/DeepSignDB",
+    "https://arxiv.org/html/2002.10119v3",
+    "https://github.com/KAKAFEI123/DsDTW/blob/main/main_DsDTW.py",
+    "https://github.com/KAKAFEI123/DsDTW/blob/main/verify_stylus_all.py"
+  ],
+  "evaluation_subsets": {
+    "mcyt": {"writers": 100, "genuine": 25, "forgery": 25, "genuine_query_indices": [4, 25]},
+    "bsid": {"writers": 132, "genuine": 16, "forgery": 12, "genuine_query_indices": [4, 16]},
+    "bsds2": {"writers": 140, "genuine": 30, "forgery": 20, "genuine_query_indices": [15, 30]},
+    "ebio1": {"writers": 35, "genuine": 40, "forgery": 30, "devices": 5, "genuine_per_device": 8, "forgery_per_device": 6},
+    "ebio2": {"writers": 35, "genuine": 8, "forgery": 6, "genuine_query_indices": [4, 8]}
+  }
+}

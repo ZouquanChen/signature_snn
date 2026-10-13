@@ -1,0 +1,11 @@
+# Install the appropriate PyTorch build for the target machine first.
+# Historical server: Python 3.10.14, torch 2.0.1 (CUDA 11.7), numpy 1.26.4.
+# This is a dependency list, not a fully locked historical environment.
+numpy<2
+torch>=2.0
+scipy
+matplotlib
+numba
+pytest
+# Used by the preserved legacy-SNN compatibility regression test.
+spikingjelly

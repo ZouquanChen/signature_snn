@@ -1,0 +1,18 @@
+{
+  "method_name": "Integer-TCN",
+  "description": "Deferred MSDS real-forgery preset; existing data is retained.",
+  "model_name": "integer-tcn",
+  "simulation_steps": 1,
+  "spike_gradient": "clipped-ste",
+  "architecture": {
+    "integer_max": 4, "tcn_width": 128, "tcn_kernel": 5,
+    "tcn_dilations": "1,2,4,8", "tcn_embed_dim": 256, "tcn_residual_scale": 0.1
+  },
+  "training": {
+    "training_source": "real", "train_datasets": "msds",
+    "data_root": "data_real_forgery/msds_v1", "train_tasks": 4,
+    "train_shot_g": 5, "train_shot_f": 10, "epochs": 100, "lr": 0.001,
+    "optimizer": "adamw", "warmup_epochs": 5, "grad_clip_norm": 1.0,
+    "lambda_div": 0.0, "save_interval": 25
+  }
+}

@@ -1,0 +1,3 @@
+# Experiment checkpoints record raw source SHA256 values. Preserve source bytes
+# on Windows/Linux checkout; do not silently rewrite LF/CRLF in archived code.
+* -text
